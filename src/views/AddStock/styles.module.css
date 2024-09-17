@@ -1,0 +1,55 @@
+/* styles.module.css */
+.formContainer {
+    margin: 0 auto;
+    max-width: 600px; /* Adjust as needed */
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contentContainer {
+    padding-left: 50px;
+}
+
+.buttonContainer {
+    text-align: center;
+}
+
+.submitButton {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.backButton {
+    background-color: #d0d0d0;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: #45a049;
+}
+
+.backButton:hover {
+    background-color: #d32f2f;
+}
+  
+  
