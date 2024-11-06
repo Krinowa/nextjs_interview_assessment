@@ -35,8 +35,8 @@ const AddStock = () => {
                 body: JSON.stringify({
                     stockId: formData.stockId,
                     stockName: formData.stockName,
-                    price: formData.price,
-                    qty: formData.qty,
+                    price: parseFloat(formData.price),
+                    qty: parseInt(formData.qty, 10),
                 }),
             });
       

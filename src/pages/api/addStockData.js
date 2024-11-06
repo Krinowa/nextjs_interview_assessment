@@ -1,28 +1,31 @@
-import mysql from 'mysql2/promise';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { stockId, stockName, price, qty } = req.body;
 
     try {
-      const db = await mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "interview",
+      const newStock = await prisma.stock.create({
+        data: {
+          stock_id: stockId,
+          stock_name: stockName,
+          price: price,
+          quantity: qty,
+        },
       });
 
-      const query = `INSERT INTO stock (stock_id, stock_name, price, quantity) VALUES (?, ?, ?, ?)`;
-      await db.execute(query, [stockId, stockName, price, qty]);
-
-      db.end();
-
-      res.status(200).json({ success: true, message: 'Stock added successfully' });
+      res.status(200).json({ success: true, message: 'Stock added successfully', stock: newStock });
+    
     } catch (error) {
       console.error('Error adding stock:', error);
-      res.status(500).json({ success: false, message: 'Failed to add stock'});
+      res.status(500).json({ success: false, message: 'Failed to add stock' });
+    } finally {
+      await prisma.$disconnect();
     }
-  } else {
+  } 
+  else {
     res.status(405).json({ message: 'Request method not allowed' });
   }
 }

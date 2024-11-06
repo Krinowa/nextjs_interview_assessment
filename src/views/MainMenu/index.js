@@ -93,8 +93,8 @@ const MainMenu = () => {
           id: formData.id,
           stockId: formData.stockId,
           stockName: formData.stockName,
-          price: formData.price,
-          qty: formData.qty,
+          price: parseFloat(formData.price),
+          qty: parseInt(formData.qty, 10)
         }),
       });
 
@@ -143,7 +143,7 @@ const MainMenu = () => {
   return (
     <div className={styles.container}>
       <div className={styles.headerContainer}>
-        <h1 className={styles.heading}>Stock Manager</h1>
+        <h1 className={styles.heading}>Stock Manager123</h1>
         <Button className={styles.addButton} onClick={handleAddStockClick}>Add Stock</Button>
       </div>
       <Table aria-label="Stock Manager Table" className={styles.customTable}>
